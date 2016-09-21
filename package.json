@@ -1,0 +1,37 @@
+{
+  "name": "imagemin-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "testing various imagemin compressions",
+  "scripts": {
+    "test": "ava --verbose test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thisconnect/imagemin-tests.git"
+  },
+  "author": "Enrique Erne",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thisconnect/imagemin-tests/issues"
+  },
+  "homepage": "https://github.com/thisconnect/imagemin-tests#readme",
+  "dependencies": {
+    "ava": "^0.16.0",
+    "fildes-extra": "^0.5.1",
+    "imagemin": "^5.2.2",
+    "imagemin-advpng": "^3.1.0",
+    "imagemin-gifsicle": "^5.1.0",
+    "imagemin-jpeg-recompress": "^5.1.0",
+    "imagemin-jpegoptim": "^5.0.0",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-optipng": "^5.2.1",
+    "imagemin-pngcrush": "^5.0.0",
+    "imagemin-pngout": "^2.0.0",
+    "imagemin-pngquant": "^5.0.0",
+    "imagemin-svgo": "^5.2.0",
+    "imagemin-webp": "^4.0.0",
+    "imagemin-zopfli": "^5.0.0"
+  }
+}
