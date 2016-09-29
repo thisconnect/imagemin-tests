@@ -12,3 +12,5 @@
   https://commons.wikimedia.org/wiki/File:Mercuryorbitsolarsystem.gif
 - 120-cell-inner.gif ‎(256 × 256 pixels, file size: 5.06 MB, MIME type: image/gif, looped, 96 frames, 4.8 s)
   https://commons.wikimedia.org/wiki/File:120-cell-inner.gif
+- Deltoidalicositetrahedron.gif ‎(TRANSPARENT, 256 × 256 pixels, file size: 947 KB, MIME type: image/gif, looped, 60 frames, 3.0 s)
+  https://commons.wikimedia.org/wiki/File:Deltoidalicositetrahedron.gif
