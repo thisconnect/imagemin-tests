@@ -1,20 +1,33 @@
 import test from 'ava'
-import { readdir, rm } from 'fildes-extra'
+import { readFile, writeFile, find, rm } from 'fildes-extra'
+import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminZopfli from 'imagemin-zopfli'
 
-const dir = 'build/zopfli'
-
-test.before(t => rm(dir))
-
-test('zopfli', t => imagemin(['images/*.png'], dir, {
-  plugins: [imageminZopfli({
-    // 8bit: false,
-    // transparent: false,
-    // iterations: 15,
-    // iterationsLarge: 5,
-    // more: false,
-  })]
+test.before(t => {
+  return find('build/**/zopfli.*.png')
+  .then(files => files.map(file => rm(file)))
 })
-.then(() => readdir(dir))
-.then(imgs => t.truthy(imgs.length, dir)))
+
+const zopfli = files => {
+  return Promise.all(files.map(file => {
+    return readFile(join('images', file))
+    .then(buffer => imagemin.buffer(buffer, {
+      plugins: [imageminZopfli({
+        // 8bit: false,
+        // transparent: false,
+        // iterations: 15,
+        // iterationsLarge: 5,
+        // more: false,
+      })]
+    }))
+    .then(buffer => writeFile(join('build', file, 'zopfli.default.png'), buffer))
+  }))
+}
+
+test('zopfli', t => {
+  return find('*.png', { cwd: 'images' })
+  .then(zopfli)
+  .then(() => find('build/**/zopfli.*.png'))
+  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} zopfli's`))
+})

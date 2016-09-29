@@ -1,19 +1,32 @@
 import test from 'ava'
-import { readdir, rm } from 'fildes-extra'
+import { readFile, writeFile, find, rm } from 'fildes-extra'
+import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminOptipng from 'imagemin-optipng'
 
-const dir = 'build/optipng'
-
-test.before(t => rm(dir))
-
-test('optipng', t => imagemin(['images/*.png'], dir, {
-  plugins: [imageminOptipng({
-    // optimizationLevel: 3,
-    // bitDepthReduction: true,
-    // colorTypeReduction: true,
-    // paletteReduction: true,
-  })]
+test.before(t => {
+  return find('build/**/optipng.*.png')
+  .then(files => files.map(file => rm(file)))
 })
-.then(() => readdir(dir))
-.then(imgs => t.truthy(imgs.length, dir)))
+
+const optipng = files => {
+  return Promise.all(files.map(file => {
+    return readFile(join('images', file))
+    .then(buffer => imagemin.buffer(buffer, {
+      plugins: [imageminOptipng({
+        // optimizationLevel: 3,
+        // bitDepthReduction: true,
+        // colorTypeReduction: true,
+        // paletteReduction: true,
+      })]
+    }))
+    .then(buffer => writeFile(join('build', file, 'optipng.default.png'), buffer))
+  }))
+}
+
+test('optipng', t => {
+  return find('*.png', { cwd: 'images' })
+  .then(optipng)
+  .then(() => find('build/**/optipng.*.png'))
+  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} optipng's`))
+})

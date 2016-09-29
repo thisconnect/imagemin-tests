@@ -1,21 +1,34 @@
 import test from 'ava'
-import { readdir, rm } from 'fildes-extra'
+import { readFile, writeFile, find, rm } from 'fildes-extra'
+import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminPngquant from 'imagemin-pngquant'
 
-const dir = 'build/pngquant'
-
-test.before(t => rm(dir))
-
-test('pngquant', t => imagemin(['images/*.png'], dir, {
-  plugins: [imageminPngquant({
-    // floyd: 0.5,
-    // nofs: false,
-    // posterize:
-    // quality:
-    // speed: 3
-    // verbose: false
-  })]
+test.before(t => {
+  return find('build/**/pngquant.*.png')
+  .then(files => files.map(file => rm(file)))
 })
-.then(() => readdir(dir))
-.then(imgs => t.truthy(imgs.length, dir)))
+
+const pngquant = files => {
+  return Promise.all(files.map(file => {
+    return readFile(join('images', file))
+    .then(buffer => imagemin.buffer(buffer, {
+      plugins: [imageminPngquant({
+        // floyd: 0.5,
+        // nofs: false,
+        // posterize:
+        // quality:
+        // speed: 3
+        // verbose: false
+      })]
+    }))
+    .then(buffer => writeFile(join('build', file, 'pngquant.default.png'), buffer))
+  }))
+}
+
+test('pngquant', t => {
+  return find('*.png', { cwd: 'images' })
+  .then(pngquant)
+  .then(() => find('build/**/pngquant.*.png'))
+  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} pngquant's`))
+})

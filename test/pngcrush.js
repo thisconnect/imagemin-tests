@@ -1,16 +1,29 @@
 import test from 'ava'
-import { readdir, rm } from 'fildes-extra'
+import { readFile, writeFile, find, rm } from 'fildes-extra'
+import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminPngcrush from 'imagemin-pngcrush'
 
-const dir = 'build/pngcrush'
-
-test.before(t => rm(dir))
-
-test('pngcrush', t => imagemin(['images/*.png'], dir, {
-  plugins: [imageminPngcrush({
-    // reduce: false
-  })]
+test.before(t => {
+  return find('build/**/pngcrush.*.png')
+  .then(files => files.map(file => rm(file)))
 })
-.then(() => readdir(dir))
-.then(imgs => t.truthy(imgs.length, dir)))
+
+const pngcrush = files => {
+  return Promise.all(files.map(file => {
+    return readFile(join('images', file))
+    .then(buffer => imagemin.buffer(buffer, {
+      plugins: [imageminPngcrush({
+        // reduce: false
+      })]
+    }))
+    .then(buffer => writeFile(join('build', file, 'pngcrush.default.png'), buffer))
+  }))
+}
+
+test('pngcrush', t => {
+  return find('*.png', { cwd: 'images' })
+  .then(pngcrush)
+  .then(() => find('build/**/pngcrush.*.png'))
+  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} pngcrush's`))
+})

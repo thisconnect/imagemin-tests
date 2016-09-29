@@ -1,19 +1,32 @@
 import test from 'ava'
-import { readdir, rm } from 'fildes-extra'
+import { readFile, writeFile, find, rm } from 'fildes-extra'
+import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminJpegoptim from 'imagemin-jpegoptim'
 
-const dir = 'build/jpegoptim'
+test.before(t => {
+  return find('build/**/jpegoptim.*.jpg')
+  .then(files => files.map(file => rm(file)))
+})
 
-test.before(t => rm(dir))
+const jpegoptim = files => {
+  return Promise.all(files.map(file => {
+    return readFile(join('images', file))
+    .then(buffer => imagemin.buffer(buffer, {
+      plugins: [imageminJpegoptim({
+        // progressive: false,
+        // max: 80,
+        // size:
+      })]
+    }))
+    .then(buffer => writeFile(join('build', file, 'jpegoptim.default.jpg'), buffer))
+  }))
+}
 
 // requires libjpeg
-test.skip('jpegoptim', t => imagemin(['images/*.jpg'], dir, {
-  plugins: [imageminJpegoptim({
-    // progressive: false,
-    // max: 80,
-    // size:
-  })]
+test.skip('jpegoptim', t => {
+  return find('*.jpg', { cwd: 'images' })
+  .then(jpegoptim)
+  .then(() => find('build/**/jpegoptim.*.jpg'))
+  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} jpegoptim's`))
 })
-.then(() => readdir(dir))
-.then(imgs => t.truthy(imgs.length, dir)))

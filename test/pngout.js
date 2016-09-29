@@ -1,17 +1,30 @@
 import test from 'ava'
-import { readdir, rm } from 'fildes-extra'
+import { readFile, writeFile, find, rm } from 'fildes-extra'
+import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminPngout from 'imagemin-pngout'
 
-const dir = 'build/pngout'
+test.before(t => {
+  return find('build/**/pngout.*.png')
+  .then(files => files.map(file => rm(file)))
+})
 
-test.before(t => rm(dir))
+const pngout = files => {
+  return Promise.all(files.map(file => {
+    return readFile(join('images', file))
+    .then(buffer => imagemin.buffer(buffer, {
+      plugins: [imageminPngout({
+        // strategy: 0
+      })]
+    }))
+    .then(buffer => writeFile(join('build', file, 'pngout.default.png'), buffer))
+  }))
+}
 
 // https://github.com/imagemin/imagemin-pngout/issues/1
-test.skip('pngout', t => imagemin(['images/*.png'], dir, {
-  plugins: [imageminPngout({
-    // strategy: 0
-  })]
+test.skip('pngout', t => {
+  return find('*.png', { cwd: 'images' })
+  .then(pngout)
+  .then(() => find('build/**/pngout.*.png'))
+  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} pngout's`))
 })
-.then(() => readdir(dir))
-.then(imgs => t.truthy(imgs.length, dir)))
