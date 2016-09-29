@@ -1,3 +1,4 @@
+[![Build Status](https://img.shields.io/travis/thisconnect/imagemin-tests/master.svg?style=flat-square)](https://travis-ci.org/thisconnect/imagemin-tests)
 [![Dependencies](https://img.shields.io/david/thisconnect/imagemin-tests.svg?style=flat-square)](https://david-dm.org/thisconnect/imagemin-tests)
 
 This repository contains all (? or most) imagemin plugins up to this date.
