@@ -6,7 +6,7 @@ It is intended as a playground to test different
 compressions on the same set on images and compare their output.
 Plugins default options should be in place, but commented out.
 
-It might help to decide which plugin fits to you.
+It might help to decide which plugin fits best to you.
 
 
 ## install
@@ -21,6 +21,9 @@ npm install
 ## test
 
 - place images to test/images
+- by default there are already a few images,
+  just remove them if you don't want to test on the default set,
+  see [test/images](https://github.com/thisconnect/imagemin-tests/tree/master/test/images)
 - run `npm t` to run all 'enabled' plugins
 - or just run one plugin, i.e. `ava --verbose test/zopfli.js`
 
