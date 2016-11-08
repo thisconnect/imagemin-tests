@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --ignore-path .gitignore .",
     "test": "ava --verbose test/*.js",
-    "beforetest": "npm run lint"
+    "pretest": "npm run lint"
   },
   "repository": {
     "type": "git",
