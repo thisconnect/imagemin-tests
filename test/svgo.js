@@ -4,7 +4,7 @@ import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminSvgo from 'imagemin-svgo'
 
-test.before(t => {
+test.before(() => {
   return find('build/**/svgo.*.svg')
   .then(files => files.map(file => rm(file)))
 })

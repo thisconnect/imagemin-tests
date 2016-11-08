@@ -4,7 +4,7 @@ import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminWebp from 'imagemin-webp'
 
-test.before(t => {
+test.before(() => {
   return find('build/**/webp.*.webp')
   .then(files => files.map(file => rm(file)))
 })

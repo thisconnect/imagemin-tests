@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "description": "testing various imagemin compressions",
   "scripts": {
-    "test": "ava --verbose test/*.js"
+    "lint": "eslint --ignore-path .gitignore .",
+    "test": "ava --verbose test/*.js",
+    "beforetest": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -33,5 +35,9 @@
     "imagemin-svgo": "^5.2.0",
     "imagemin-webp": "^4.0.0",
     "imagemin-zopfli": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "eslint-plugin-promise": "^3.3.1"
   }
 }

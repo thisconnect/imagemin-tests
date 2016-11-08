@@ -4,7 +4,7 @@ import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminMozjpeg from 'imagemin-mozjpeg'
 
-test.before(t => {
+test.before(() => {
   return find('build/**/mozjpeg.*.jpg')
   .then(files => files.map(file => rm(file)))
 })

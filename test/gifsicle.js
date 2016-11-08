@@ -4,7 +4,7 @@ import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminGifsicle from 'imagemin-gifsicle'
 
-test.before(t => {
+test.before(() => {
   return find('build/**/gifsicle.*.gif')
   .then(files => files.map(file => rm(file)))
 })

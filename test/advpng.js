@@ -4,7 +4,7 @@ import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminAdvpng from 'imagemin-advpng'
 
-test.before(t => {
+test.before(() => {
   return find('build/**/advpng.*.png')
   .then(files => files.map(file => rm(file)))
 })
