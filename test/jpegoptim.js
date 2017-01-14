@@ -4,14 +4,17 @@ import { join } from 'path'
 import imagemin from 'imagemin'
 import imageminJpegoptim from 'imagemin-jpegoptim'
 
+const images = join(__dirname, 'images')
+const build = join(__dirname, 'build')
+
 test.before(() => {
-  return find('build/**/jpegoptim.*.jpg')
+  return find(join(build, '**/jpegoptim.*.jpg'))
   .then(files => files.map(file => rm(file)))
 })
 
 const jpegoptim = files => {
   return Promise.all(files.map(file => {
-    return readFile(join('images', file))
+    return readFile(join(images, file))
     .then(buffer => imagemin.buffer(buffer, {
       plugins: [imageminJpegoptim({
         // progressive: false,
@@ -19,14 +22,14 @@ const jpegoptim = files => {
         // size:
       })]
     }))
-    .then(buffer => writeFile(join('build', file, 'jpegoptim.default.jpg'), buffer))
+    .then(buffer => writeFile(join(build, file, 'jpegoptim.default.jpg'), buffer))
   }))
 }
 
 // requires libjpeg
 test.skip('jpegoptim', t => {
-  return find('*.jpg', { cwd: 'images' })
+  return find('*.jpg', { cwd: images })
   .then(jpegoptim)
-  .then(() => find('build/**/jpegoptim.*.jpg'))
+  .then(() => find(join(build, '**/jpegoptim.*.jpg')))
   .then(imgs => t.truthy(imgs.length, `found ${imgs.length} jpegoptim's`))
 })
