@@ -27,6 +27,7 @@ const jpegoptim = files => {
 }
 
 // requires libjpeg
+// https://github.com/imagemin/jpegoptim-bin/commit/acf8a07bbfb731b0ce1e6b788f32d7e5dc39208d
 test.skip('jpegoptim', t => {
   return find('*.jpg', { cwd: images })
   .then(jpegoptim)

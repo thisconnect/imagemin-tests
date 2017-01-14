@@ -38,6 +38,7 @@ const mozjpeg = files => {
 }
 
 // disabled due to missing mozjpeg requirements on OSX
+// https://github.com/imagemin/mozjpeg-bin/issues/16
 test.skip('mozjpeg', t => {
   return find('*.jpg', { cwd: images })
   .then(mozjpeg)
