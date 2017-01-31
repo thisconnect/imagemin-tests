@@ -17,7 +17,7 @@ const guetzli = files => {
     return readFile(join(images, file))
     .then(buffer => imagemin.buffer(buffer, {
       plugins: [imageminGuetzli({
-        quality: 84,
+        quality: 84
         // verbose: true
       })]
     }))
