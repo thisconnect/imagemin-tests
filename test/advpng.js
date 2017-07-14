@@ -24,8 +24,7 @@ const advpng = files => {
   }))
 }
 
-// https://github.com/imagemin/imagemin-advpng/issues/3
-test.skip('advpng', t => {
+test('advpng', t => {
   return find('*.png', { cwd: images })
   .then(advpng)
   .then(() => find(join(build, '**/advpng.*.png')))
