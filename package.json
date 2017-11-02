@@ -33,7 +33,7 @@
     "imagemin-pngcrush": "^5.0.0",
     "imagemin-pngout": "^2.0.0",
     "imagemin-pngquant": "^5.0.0",
-    "imagemin-svgo": "^5.2.0",
+    "imagemin-svgo": "^6.0.0",
     "imagemin-webp": "^4.0.0",
     "imagemin-zopfli": "^5.0.0"
   },
