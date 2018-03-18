@@ -24,8 +24,7 @@ const pngout = files => {
   }))
 }
 
-// https://github.com/imagemin/imagemin-pngout/issues/1
-test.skip('pngout', t => {
+test('pngout', t => {
   return find('*.png', { cwd: images })
   .then(pngout)
   .then(() => find(join(build, '**/pngout.*.png')))

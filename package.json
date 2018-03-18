@@ -31,14 +31,14 @@
     "imagemin-mozjpeg": "^7.0.0",
     "imagemin-optipng": "^5.2.1",
     "imagemin-pngcrush": "^5.1.0",
-    "imagemin-pngout": "^2.0.0",
-    "imagemin-pngquant": "^5.0.1",
+    "imagemin-pngout": "^3.0.0",
+    "imagemin-pngquant": "^5.1.0",
     "imagemin-svgo": "^6.0.0",
     "imagemin-webp": "^4.1.0",
     "imagemin-zopfli": "^5.1.0"
   },
   "devDependencies": {
-    "eslint": "^4.1.0",
-    "eslint-plugin-promise": "^3.6.0"
+    "eslint": "^4.19.0",
+    "eslint-plugin-promise": "^3.7.0"
   }
 }
