@@ -1,7 +1,6 @@
 [![Build Status](https://img.shields.io/travis/thisconnect/imagemin-tests/master.svg?style=flat-square&maxAge=1800)](https://travis-ci.org/thisconnect/imagemin-tests)
 [![AppVeyor](https://img.shields.io/appveyor/ci/thisconnect/imagemin-tests/master.svg?style=flat-square&maxAge=1800)](https://ci.appveyor.com/project/thisconnect/imagemin-tests)
 [![Dependencies](https://img.shields.io/david/thisconnect/imagemin-tests.svg?style=flat-square&maxAge=1800)](https://david-dm.org/thisconnect/imagemin-tests)
-[![bitHound](https://img.shields.io/bithound/code/github/thisconnect/imagemin-tests.svg?style=flat-square&maxAge=1800)](https://www.bithound.io/github/thisconnect/imagemin-tests)
 
 This repository contains all (? or most) imagemin plugins up to this date.
 It is intended as a playground to test different
