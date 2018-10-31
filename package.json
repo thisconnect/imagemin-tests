@@ -23,7 +23,7 @@
     "fildes-extra": "^0.6.0",
     "imagemin": "^6.0.0",
     "imagemin-advpng": "^4.0.0",
-    "imagemin-gifsicle": "^5.2.0",
+    "imagemin-gifsicle": "^6.0.0",
     "imagemin-guetzli": "^1.0.0",
     "imagemin-jpeg-recompress": "^5.1.0",
     "imagemin-jpegoptim": "^5.2.0",
