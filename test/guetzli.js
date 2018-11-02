@@ -9,25 +9,25 @@ const build = join(__dirname, 'build')
 
 test.before(() => {
   return find(join(build, '**/guetzli.*.jpg'))
-  .then(files => files.map(file => rm(file)))
+    .then(files => files.map(file => rm(file)))
 })
 
 const guetzli = files => {
   return Promise.all(files.map(file => {
     return readFile(join(images, file))
-    .then(buffer => imagemin.buffer(buffer, {
-      plugins: [imageminGuetzli({
-        quality: 84
-        // verbose: true
-      })]
-    }))
-    .then(buffer => writeFile(join(build, file, 'guetzli.default.jpg'), buffer))
+      .then(buffer => imagemin.buffer(buffer, {
+        plugins: [imageminGuetzli({
+          quality: 84
+          // verbose: true
+        })]
+      }))
+      .then(buffer => writeFile(join(build, file, 'guetzli.default.jpg'), buffer))
   }))
 }
 
 test('guetzli', t => {
   return find('*.jpg', { cwd: images })
-  .then(guetzli)
-  .then(() => find(join(build, '**/guetzli.*.jpg')))
-  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} guetzli's`))
+    .then(guetzli)
+    .then(() => find(join(build, '**/guetzli.*.jpg')))
+    .then(imgs => t.truthy(imgs.length, `found ${imgs.length} guetzli's`))
 })

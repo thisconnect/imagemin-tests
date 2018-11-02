@@ -9,31 +9,31 @@ const build = join(__dirname, 'build')
 
 test.before(() => {
   return find(join(build, '**/mozjpeg.*.jpg'))
-  .then(files => files.map(file => rm(file)))
+    .then(files => files.map(file => rm(file)))
 })
 
 const mozjpeg = files => {
   return Promise.all(files.map(file => {
     return readFile(join(images, file))
-    .then(buffer => imagemin.buffer(buffer, {
-      plugins: [imageminMozjpeg({
-        // quality: 100,
-        // progressive: true,
-        // targa: false,
-        // revert: false,
-        // fastcrush: false,
-        // dcScanOpt: 1,
-        // notrellis: false,
-        // notrellisDC: false,
-        // tune: 'hvs-psnr',
-        // noovershoot: false,
-        // arithmetic: false,
-        // quantTable:
-        // smooth:
-        // maxmemory:
-      })]
-    }))
-    .then(buffer => writeFile(join(build, file, 'mozjpeg.default.jpg'), buffer))
+      .then(buffer => imagemin.buffer(buffer, {
+        plugins: [imageminMozjpeg({
+          // quality: 100,
+          // progressive: true,
+          // targa: false,
+          // revert: false,
+          // fastcrush: false,
+          // dcScanOpt: 1,
+          // notrellis: false,
+          // notrellisDC: false,
+          // tune: 'hvs-psnr',
+          // noovershoot: false,
+          // arithmetic: false,
+          // quantTable:
+          // smooth:
+          // maxmemory:
+        })]
+      }))
+      .then(buffer => writeFile(join(build, file, 'mozjpeg.default.jpg'), buffer))
   }))
 }
 

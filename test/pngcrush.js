@@ -9,24 +9,24 @@ const build = join(__dirname, 'build')
 
 test.before(() => {
   return find(join(build, '**/pngcrush.*.png'))
-  .then(files => files.map(file => rm(file)))
+    .then(files => files.map(file => rm(file)))
 })
 
 const pngcrush = files => {
   return Promise.all(files.map(file => {
     return readFile(join(images, file))
-    .then(buffer => imagemin.buffer(buffer, {
-      plugins: [imageminPngcrush({
-        // reduce: false
-      })]
-    }))
-    .then(buffer => writeFile(join(build, file, 'pngcrush.default.png'), buffer))
+      .then(buffer => imagemin.buffer(buffer, {
+        plugins: [imageminPngcrush({
+          // reduce: false
+        })]
+      }))
+      .then(buffer => writeFile(join(build, file, 'pngcrush.default.png'), buffer))
   }))
 }
 
 test('pngcrush', t => {
   return find('*.png', { cwd: images })
-  .then(pngcrush)
-  .then(() => find(join(build, '**/pngcrush.*.png')))
-  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} pngcrush's`))
+    .then(pngcrush)
+    .then(() => find(join(build, '**/pngcrush.*.png')))
+    .then(imgs => t.truthy(imgs.length, `found ${imgs.length} pngcrush's`))
 })

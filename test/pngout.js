@@ -9,24 +9,24 @@ const build = join(__dirname, 'build')
 
 test.before(() => {
   return find(join(build, '**/pngout.*.png'))
-  .then(files => files.map(file => rm(file)))
+    .then(files => files.map(file => rm(file)))
 })
 
 const pngout = files => {
   return Promise.all(files.map(file => {
     return readFile(join(images, file))
-    .then(buffer => imagemin.buffer(buffer, {
-      plugins: [imageminPngout({
-        // strategy: 0
-      })]
-    }))
-    .then(buffer => writeFile(join(build, file, 'pngout.default.png'), buffer))
+      .then(buffer => imagemin.buffer(buffer, {
+        plugins: [imageminPngout({
+          // strategy: 0
+        })]
+      }))
+      .then(buffer => writeFile(join(build, file, 'pngout.default.png'), buffer))
   }))
 }
 
 test('pngout', t => {
   return find('*.png', { cwd: images })
-  .then(pngout)
-  .then(() => find(join(build, '**/pngout.*.png')))
-  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} pngout's`))
+    .then(pngout)
+    .then(() => find(join(build, '**/pngout.*.png')))
+    .then(imgs => t.truthy(imgs.length, `found ${imgs.length} pngout's`))
 })

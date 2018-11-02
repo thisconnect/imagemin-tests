@@ -9,25 +9,25 @@ const build = join(__dirname, 'build')
 
 test.before(() => {
   return find(join(build, '**/jpegtran.*.jpg'))
-  .then(files => files.map(file => rm(file)))
+    .then(files => files.map(file => rm(file)))
 })
 
 const jpegtran = files => {
   return Promise.all(files.map(file => {
     return readFile(join(images, file))
-    .then(buffer => imagemin.buffer(buffer, {
-      plugins: [imageminJpegtran({
-        // progressive: false,
-        // arithmetic: false
-      })]
-    }))
-    .then(buffer => writeFile(join(build, file, 'jpegtran.default.jpg'), buffer))
+      .then(buffer => imagemin.buffer(buffer, {
+        plugins: [imageminJpegtran({
+          // progressive: false,
+          // arithmetic: false
+        })]
+      }))
+      .then(buffer => writeFile(join(build, file, 'jpegtran.default.jpg'), buffer))
   }))
 }
 
 test('jpegtran', t => {
   return find('*.jpg', { cwd: images })
-  .then(jpegtran)
-  .then(() => find(join(build, '**/jpegtran.*.jpg')))
-  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} jpegtran's`))
+    .then(jpegtran)
+    .then(() => find(join(build, '**/jpegtran.*.jpg')))
+    .then(imgs => t.truthy(imgs.length, `found ${imgs.length} jpegtran's`))
 })
