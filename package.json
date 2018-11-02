@@ -27,7 +27,7 @@
     "imagemin-guetzli": "^1.0.0",
     "imagemin-jpeg-recompress": "^5.1.0",
     "imagemin-jpegoptim": "^5.2.0",
-    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-jpegtran": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^5.2.1",
     "imagemin-pngcrush": "^5.1.0",
