@@ -26,10 +26,9 @@
     "imagemin-gifsicle": "^6.0.0",
     "imagemin-guetzli": "^1.0.0",
     "imagemin-jpeg-recompress": "^5.1.0",
-    "imagemin-jpegoptim": "^5.2.0",
     "imagemin-jpegtran": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
-    "imagemin-optipng": "^5.2.1",
+    "imagemin-optipng": "^6.0.0",
     "imagemin-pngcrush": "^5.1.0",
     "imagemin-pngout": "^4.0.0",
     "imagemin-pngquant": "^6.0.0",
@@ -37,8 +36,11 @@
     "imagemin-webp": "^4.1.0",
     "imagemin-zopfli": "^5.1.0"
   },
+  "disabledDeps": {
+    "imagemin-jpegoptim": "^6.0.0"
+  },
   "devDependencies": {
-    "eslint": "^5.2.0",
-    "eslint-plugin-promise": "^3.8.0"
+    "eslint": "^5.8.0",
+    "eslint-plugin-promise": "^4.0.1"
   }
 }
