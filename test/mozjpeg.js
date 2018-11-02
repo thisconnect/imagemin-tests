@@ -41,7 +41,7 @@ const mozjpeg = files => {
 // https://github.com/imagemin/mozjpeg-bin/issues/16
 test.skip('mozjpeg', t => {
   return find('*.jpg', { cwd: images })
-  .then(mozjpeg)
-  .then(() => find(join(build, '**/mozjpeg.*.jpg')))
-  .then(imgs => t.truthy(imgs.length, `found ${imgs.length} mozjpeg's`))
+    .then(mozjpeg)
+    .then(() => find(join(build, '**/mozjpeg.*.jpg')))
+    .then(imgs => t.truthy(imgs.length, `found ${imgs.length} mozjpeg's`))
 })
