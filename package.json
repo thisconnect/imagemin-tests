@@ -22,7 +22,7 @@
     "ava": "^1.0.1",
     "fildes-extra": "^0.6.0",
     "imagemin": "^6.0.0",
-    "imagemin-advpng": "^4.0.0",
+    "imagemin-advpng": "^5.0.0",
     "imagemin-gifsicle": "^6.0.0",
     "imagemin-guetzli": "^1.0.0",
     "imagemin-jpeg-recompress": "^6.0.0",
