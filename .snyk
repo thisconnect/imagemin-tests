@@ -26,3 +26,21 @@ patch:
         patched: '2019-07-04T05:30:00.285Z'
     - ava > @ava/babel-preset-stage-4 > @babel/plugin-proposal-async-generator-functions > @babel/helper-remap-async-to-generator > @babel/helper-wrap-function > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
         patched: '2019-07-04T05:30:00.285Z'
+    - snyk > lodash:
+        patched: '2019-07-11T05:33:59.287Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2019-07-11T05:33:59.287Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2019-07-11T05:33:59.287Z'
+    - snyk > snyk-config > lodash:
+        patched: '2019-07-11T05:33:59.287Z'
+    - snyk > inquirer > lodash:
+        patched: '2019-07-11T05:33:59.287Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2019-07-11T05:33:59.287Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-07-11T05:33:59.287Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-07-11T05:33:59.287Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-07-11T05:33:59.287Z'
