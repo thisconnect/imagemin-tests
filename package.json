@@ -6,9 +6,7 @@
   "scripts": {
     "lint": "eslint --ignore-path .gitignore .",
     "test": "ava --verbose test/*.js",
-    "pretest": "npm run lint",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "pretest": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -36,8 +34,7 @@
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^7.0.0",
     "imagemin-webp": "^5.0.0",
-    "imagemin-zopfli": "^6.0.0",
-    "snyk": "^2.0.0"
+    "imagemin-zopfli": "^6.0.0"
   },
   "disabledDeps": {
     "imagemin-jpegoptim": "^6.0.0"
@@ -45,6 +42,5 @@
   "devDependencies": {
     "eslint": "^5.8.0",
     "eslint-plugin-promise": "^4.0.1"
-  },
-  "snyk": true
+  }
 }
