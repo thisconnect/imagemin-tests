@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/thisconnect/imagemin-tests#readme",
   "dependencies": {
-    "ava": "^3.5.2",
+    "ava": "^3.8.1",
     "fildes-extra": "^1.0.0",
     "imagemin": "^7.0.1",
     "imagemin-advpng": "^5.1.0",
