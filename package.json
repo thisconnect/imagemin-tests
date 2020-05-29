@@ -34,7 +34,7 @@
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^7.1.0",
     "imagemin-webp": "^5.0.0",
-    "imagemin-zopfli": "^6.0.0"
+    "imagemin-zopfli": "^7.0.0"
   },
   "disabledDeps": {
     "imagemin-jpegoptim": "^6.0.0"
