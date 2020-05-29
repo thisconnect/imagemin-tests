@@ -26,7 +26,7 @@
     "imagemin-gifsicle": "^6.0.0",
     "imagemin-guetzli": "^2.0.0",
     "imagemin-jpeg-recompress": "^6.0.0",
-    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-jpegtran": "^7.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.0.0",
     "imagemin-pngcrush": "^6.0.0",
